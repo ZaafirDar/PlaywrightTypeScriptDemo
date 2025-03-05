@@ -1,0 +1,8 @@
+{
+    "homePageLogo":"h2:has-text('Test login')",
+    "username":"input[id='username']",
+    "password":"input[id='password']",
+    "loginButton":"button[id='submit']",
+    "loginSuccessHeader":".post-title:has-text('Logged In Successfully')",
+    "logoutButton":"a:has-text('Log out')"
+}

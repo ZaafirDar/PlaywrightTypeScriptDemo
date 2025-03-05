@@ -1,0 +1,7 @@
+{
+    "BASE_URL": "https://practicetestautomation.com/practice-test-login/",
+    "Header": "Test login",
+    "pageTitle":"Test Login | Practice Test Automation",
+    "username":"student",
+    "password":"Password123"
+}
