@@ -1,7 +1,6 @@
 import { test as base, expect } from '@playwright/test';
 import { ExamplePage } from '../pageObejcts/example';
 import { LoginPage } from '../pageObejcts/login';
-import testData from '../data/example.json';
 
 // Extend Playwright's test object
 const test = base.extend<{ 
