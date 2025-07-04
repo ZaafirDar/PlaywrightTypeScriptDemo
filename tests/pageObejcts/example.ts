@@ -1,39 +1,21 @@
-import { Page } from '@playwright/test';
-import { test, expect } from '@playwright/test';
+
+
+
+
 import locators from '../locators/example.json';
-import testData from '../data/example.json'; 
+import testData from '../data/example.json';
+import { BasePage } from './basePage';
 
-export class ExamplePage {
-    readonly page: Page;
-
-    constructor(page: Page) {
-        this.page = page;
+export class ExamplePage extends BasePage {
+    constructor(page: any) {
+        super(page);
     }
 
-    async navigateTo(url: string) {
-        await this.page.goto(url);
+    async checkHeader(): Promise<void> {
+        await this.verifyHeaderInBase(locators.homePageLogo, testData.Header);
     }
 
-    async clickButton(selector: string) {
-        await this.page.click(selector);
-    }
-
-    async enterText(selector: string, text: string) {
-        await this.page.fill(selector, text);
-    }
-
-    async getText(selector: string): Promise<string> {
-        const text = await this.page.textContent(selector);
-        return text ?? '';
-    }
-
-    async verifyHeader() {
-        let header = await this.page.textContent(locators.homePageLogo);
-        expect(header).toContain(testData.Header)
-    }
-
-    async verifyTitle() {
-        let title = await this.page.title()
-        expect(title).toContain(testData.pageTitle)
+    async checkTitle(): Promise<void> {
+        await this.verifyTitleInBase(testData.pageTitle);
     }
 }
