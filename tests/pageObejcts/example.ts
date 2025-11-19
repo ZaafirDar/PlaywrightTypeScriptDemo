@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import { test, expect } from '@playwright/test';
-import locators from '../locators/example.json';
+import locators from '../locators/locators.json';
 import testData from '../data/example.json'; 
 
 export class ExamplePage {

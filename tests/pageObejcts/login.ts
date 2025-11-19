@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import loginLocator from '../locators/example.json';
+import loginLocator from '../locators/locators.json';
 
 export class LoginPage {
   constructor(private page: Page) {}
