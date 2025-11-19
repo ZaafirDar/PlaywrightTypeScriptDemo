@@ -4,3 +4,8 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Test artifacts
+*.mp4
+*.webm
+test-results.json

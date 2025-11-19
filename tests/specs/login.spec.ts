@@ -1,7 +1,7 @@
-import { test } from '../utilities/setup'; // Import extended test
+import { test } from '../utilities/setup';
+import { navigateTo, verifyTextContains, verifyTitle } from '../utilities/helpers';
 import testData from '../data/example.json';
 import locators from '../locators/locators.json';
-import { navigateTo, verifyTextContains, verifyTitle } from '../utilities/helpers';
 
 test.beforeEach('Verify Header and title', async ({ page }) => {
   await navigateTo(page, testData.BASE_URL);

@@ -1,6 +1,5 @@
-import { Page, expect } from '@playwright/test';
+import { Page, enterText, clickButton, verifyElementVisible } from '../utilities/helpers';
 import loginLocator from '../locators/locators.json';
-import { enterText, clickButton } from '../utilities/helpers';
 
 export class LoginPage {
   
@@ -16,7 +15,7 @@ export class LoginPage {
   }
 
   async verifyLoginSucess() {
-    await expect(this.page.locator(loginLocator.loginSuccessHeader)).toBeVisible();
+    await verifyElementVisible(this.page, loginLocator.loginSuccessHeader);
   }
   
   async userLogout() {

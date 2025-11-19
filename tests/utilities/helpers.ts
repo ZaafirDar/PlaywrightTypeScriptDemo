@@ -1,46 +1,35 @@
 import { Page, expect } from '@playwright/test';
 
-/**
- * Navigate to a specified URL
- */
-export async function navigateTo(page: Page, url: string): Promise<void> {
+export { Page, expect };
+
+// Navigation
+export const navigateTo = async (page: Page, url: string): Promise<void> => {
   await page.goto(url);
-}
+};
 
-/**
- * Click a button or element by selector
- */
-export async function clickButton(page: Page, selector: string): Promise<void> {
+// Interactions
+export const clickButton = async (page: Page, selector: string): Promise<void> => {
   await page.click(selector);
-}
+};
 
-/**
- * Enter text into an input field
- */
-export async function enterText(page: Page, selector: string, text: string): Promise<void> {
+export const enterText = async (page: Page, selector: string, text: string): Promise<void> => {
   await page.fill(selector, text);
-}
+};
 
-/**
- * Get text content from an element
- */
-export async function getText(page: Page, selector: string): Promise<string> {
-  const text = await page.textContent(selector);
-  return text ?? '';
-}
+// Getters
+export const getText = async (page: Page, selector: string): Promise<string> => {
+  return (await page.textContent(selector)) ?? '';
+};
 
-/**
- * Verify text content contains expected value
- */
-export async function verifyTextContains(page: Page, selector: string, expectedText: string): Promise<void> {
-  const text = await page.textContent(selector);
-  expect(text).toContain(expectedText);
-}
+// Assertions
+export const verifyTextContains = async (page: Page, selector: string, expectedText: string): Promise<void> => {
+  expect(await page.textContent(selector)).toContain(expectedText);
+};
 
-/**
- * Verify page title contains expected value
- */
-export async function verifyTitle(page: Page, expectedTitle: string): Promise<void> {
-  const title = await page.title();
-  expect(title).toContain(expectedTitle);
-}
+export const verifyTitle = async (page: Page, expectedTitle: string): Promise<void> => {
+  expect(await page.title()).toContain(expectedTitle);
+};
+
+export const verifyElementVisible = async (page: Page, selector: string): Promise<void> => {
+  await expect(page.locator(selector)).toBeVisible();
+};
