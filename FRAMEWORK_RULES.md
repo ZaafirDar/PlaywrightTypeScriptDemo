@@ -173,10 +173,10 @@ async verifyLoginSucess() {
 ## Test Execution
 
 ### Running Tests
-- **Primary command**: `npm run test` - Runs `example.spec.ts` in headed mode
+- **Primary command**: `npm run test` - Runs `login.spec.ts` in headed mode
 - Standard Playwright commands work with `testDir: './tests'` configuration:
   - `npx playwright test` - Run all tests
-  - `npx playwright test example.spec.ts` - Run specific test
+  - `npx playwright test login.spec.ts` - Run specific test
   - `npx playwright show-report` - View HTML report
 
 ### Browser Configuration
@@ -219,7 +219,7 @@ async getText(selector: string): Promise<string> {
 /
 ├── tests/
 │   ├── specs/
-│   │   └── example.spec.ts
+│   │   └── login.spec.ts
 │   ├── pageObejcts/           # Note: intentional typo
 │   │   ├── example.ts
 │   │   └── login.ts

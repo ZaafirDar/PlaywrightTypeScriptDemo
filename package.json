@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test example.spec.ts --headed"
+    "test": "playwright test login.spec.ts --headed"
   },
   "repository": {
     "type": "git",

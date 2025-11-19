@@ -72,13 +72,13 @@ await examplePage.navigateTo(testData.BASE_URL);
 
 **Primary test command (from package.json):**
 ```bash
-npm run test  # Runs example.spec.ts in headed mode
+npm run test  # Runs login.spec.ts in headed mode
 ```
 
 Standard Playwright commands work but respect `testDir: './tests'` in config:
 ```bash
 npx playwright test                    # Run all tests
-npx playwright test example.spec.ts    # Specific test
+npx playwright test login.spec.ts    # Specific test
 npx playwright show-report             # View HTML report
 ```
 
