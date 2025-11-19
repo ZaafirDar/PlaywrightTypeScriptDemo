@@ -4,10 +4,12 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+    types: [ opened, synchronize, closed ]
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -19,9 +21,26 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: playwright-report
+        name: playwright-html-report
         path: playwright-report/
+        retention-days: 30
+    - name: Upload Test Results JSON
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-json
+        path: test-results/test-results.json
+        retention-days: 30
+    - name: Upload Screenshots and Videos
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: test-artifacts
+        path: |
+          test-results/**/*.png
+          test-results/**/*.webm
         retention-days: 30
