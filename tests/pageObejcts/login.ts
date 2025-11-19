@@ -1,14 +1,18 @@
 import { Page, expect } from '@playwright/test';
 import loginLocator from '../locators/locators.json';
+import { enterText, clickButton } from '../utilities/helpers';
 
 export class LoginPage {
-  constructor(private page: Page) {}
+  
+  constructor(private page: Page) {
+
+  }
 
   async loginValidCredentials(username: string, password: string) {
-    await this.page.fill(loginLocator.username, username);
-    await this.page.fill(loginLocator.password, password);
-    await this.page.click(loginLocator.loginButton);
-    await this.page.waitForTimeout(3000)
+    await enterText(this.page, loginLocator.username, username);
+    await enterText(this.page, loginLocator.password, password);
+    await clickButton(this.page, loginLocator.loginButton);
+    await this.page.waitForTimeout(3000);
   }
 
   async verifyLoginSucess() {
@@ -16,6 +20,6 @@ export class LoginPage {
   }
   
   async userLogout() {
-    await this.page.click(loginLocator.logoutButton);
+    await clickButton(this.page, loginLocator.logoutButton);
   }
 }

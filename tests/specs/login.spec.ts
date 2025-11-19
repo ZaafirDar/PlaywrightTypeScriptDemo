@@ -1,10 +1,12 @@
 import { test } from '../utilities/setup'; // Import extended test
 import testData from '../data/example.json';
+import locators from '../locators/locators.json';
+import { navigateTo, verifyTextContains, verifyTitle } from '../utilities/helpers';
 
-test.beforeEach('Verify Header and title', async ({ examplePage }) => {
-  await examplePage.navigateTo(testData.BASE_URL);
-  await examplePage.verifyHeader();
-  await examplePage.verifyTitle()
+test.beforeEach('Verify Header and title', async ({ page }) => {
+  await navigateTo(page, testData.BASE_URL);
+  await verifyTextContains(page, locators.homePageLogo, testData.Header);
+  await verifyTitle(page, testData.pageTitle);
 });
 
 test('Login Success and verify', async ({ loginPage }) => {
